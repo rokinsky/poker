@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  app:
+    container_name: app
+    image: ubuntu:latest
+    tty: true
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: >
+      bash -c "./prepare.sh
+      && yarn test"

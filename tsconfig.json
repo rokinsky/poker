@@ -1,0 +1,21 @@
+{
+  "extends": "@rokinsky/tsconfig",
+  "compilerOptions": {
+    "target": "ES2019",
+    "outDir": "dist",
+    "strict": true,
+    "rootDir": ".",
+    "baseUrl": ".",
+    "downlevelIteration": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "test/unit/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
