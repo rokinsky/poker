@@ -48,7 +48,7 @@ export class FiveCardHand extends Hand implements Comparable<FiveCardHand> {
     );
   }
 
-  toString(): string {
+  override toString(): string {
     return this.id;
   }
 }
