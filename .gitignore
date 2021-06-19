@@ -22,3 +22,6 @@ dist
 
 # IDE
 .idea
+
+# Rollup cache directory
+.rollup.cache
