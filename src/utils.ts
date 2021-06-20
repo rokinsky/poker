@@ -29,7 +29,7 @@ export const max = <T extends Comparable<T>>(comparable: readonly T[]): T => {
 
 export const distinct = <T>(xs: T[]): T[] => [...new Set(xs)];
 
-export const groupBy = <T, K extends keyof T, R extends T[K]>(
+export const groupBy = <T, K extends keyof T, R extends T[K] | T>(
   xs: readonly T[],
   predicate: (value: T) => R
 ): Map<R, T[]> => {

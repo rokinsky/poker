@@ -1,4 +1,4 @@
-import { cartesian, distinct, zip } from "@/utils";
+import { cartesian, distinct, groupBy, zip } from "@/utils";
 
 describe("distinct function", () => {
   test("1", () => {
@@ -74,5 +74,57 @@ describe("cartesian function", () => {
       [3, 6, 7],
       [3, 6, 8],
     ]);
+  });
+});
+
+describe("groupBy function", () => {
+  test("1", () => {
+    const expected = new Map([
+      [0, [0.4]],
+      [1, [1.2, 1.1]],
+      [2, [2.3]],
+    ]);
+
+    expect(groupBy([1.2, 1.1, 2.3, 0.4], Math.floor)).toEqual(expected);
+  });
+
+  test("2", () => {
+    const expected = new Map([
+      [3, ["one", "two"]],
+      [5, ["three"]],
+    ]);
+
+    expect(groupBy(["one", "two", "three"], (el) => el.length)).toEqual(
+      expected
+    );
+  });
+
+  test("3", () => {
+    enum Gender {
+      Male,
+      Female,
+    }
+
+    const expected = new Map([
+      [Gender.Male, [{ g: Gender.Male, n: "A" }]],
+      [
+        Gender.Female,
+        [
+          { g: Gender.Female, n: "B" },
+          { g: Gender.Female, n: "C" },
+        ],
+      ],
+    ]);
+
+    expect(
+      groupBy(
+        [
+          { g: Gender.Male, n: "A" },
+          { g: Gender.Female, n: "B" },
+          { g: Gender.Female, n: "C" },
+        ],
+        (el) => el.g
+      )
+    ).toEqual(expected);
   });
 });
