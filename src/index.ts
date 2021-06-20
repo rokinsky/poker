@@ -7,8 +7,10 @@ const main = async () => {
   for await (const line of io) {
     try {
       io.writeln(Evaluator.evaluate(line));
-    } catch (err) {
-      io.writeln(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        io.writeln(err.message);
+      }
     }
   }
 };

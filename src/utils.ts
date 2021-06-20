@@ -14,7 +14,7 @@ export const compareWithLex = <TVal, T extends Comparable<TVal>>(
   value: TVal
 ): CompareResult => {
   const res = compare(comparable, value);
-  return res == CompareResult.EQUAL
+  return res === CompareResult.EQUAL
     ? comparePrimitives(`${comparable}`, `${value}`)
     : res;
 };
@@ -29,15 +29,15 @@ export const max = <T extends Comparable<T>>(comparable: readonly T[]): T => {
 
 export const distinct = <T>(xs: T[]): T[] => [...new Set(xs)];
 
-export const groupBy = <T extends Record<string, any>, K extends keyof T>(
+export const groupBy = <T, K extends keyof T, R extends T[K]>(
   xs: readonly T[],
-  predicate: (value: T) => T[K]
-): Record<T[K], T[]> => {
+  predicate: (value: T) => R
+): Map<R, T[]> => {
   return xs.reduce((acc, x) => {
     const key = predicate(x);
-    acc[key] = (acc[key] || []).concat(x);
+    acc.set(key, (acc.get(key) || []).concat(x));
     return acc;
-  }, {} as Record<T[K], T[]>);
+  }, new Map<R, T[]>());
 };
 
 export const arrayEquals = <T>(a: readonly T[], b: readonly T[]) => {

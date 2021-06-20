@@ -42,13 +42,17 @@ export class Card implements Comparable<Card> {
     return new Card(Card.charToRank(rank), Card.charToSuit(suit));
   }
 
-  private static charToRank = (ch: string): CardRank => Card.ranks.indexOf(ch);
+  private static readonly charToRank = (ch: string): CardRank =>
+    Card.ranks.indexOf(ch);
 
-  private static charToSuit = (ch: string): CardSuit => Card.suits.indexOf(ch);
+  private static readonly charToSuit = (ch: string): CardSuit =>
+    Card.suits.indexOf(ch);
 
-  private static rankToChar = (rank: CardRank): string => Card.ranks[rank];
+  private static readonly rankToChar = (rank: CardRank): string =>
+    Card.ranks[rank];
 
-  private static suitToChar = (suit: CardSuit): string => Card.suits[suit];
+  private static readonly suitToChar = (suit: CardSuit): string =>
+    Card.suits[suit];
 
   compare(other: Card): CompareResult {
     return comparePrimitives(this.rank, other.rank);

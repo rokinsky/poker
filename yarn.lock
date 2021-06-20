@@ -720,10 +720,10 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@rokinsky/eslint-config@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@rokinsky/eslint-config/-/eslint-config-1.1.1.tgz#311e51a33f874ea96761b60d999d287787b1cfbc"
-  integrity sha512-tO2G/J7uQPUu/nmq42le1B1mSlm70dJ032k+iTav+pbKqLlEHKYo6sl13IjBEKcsg6aa1EKMzLsC+CQJufNOSQ==
+"@rokinsky/eslint-config@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@rokinsky/eslint-config/-/eslint-config-1.3.0.tgz#c03cbaf1c3aedacc1a037d3b7a8c76fd8feeab9d"
+  integrity sha512-AeMd9q4nwMjeMzByG15BzLqX+wytGUZrCa+Ge8dRAGVDhP9sWy4wIPeBoMAgsfO2JLF9aT/64k2u0mwasWQimg==
   dependencies:
     "@types/eslint" "^7.2.13"
     "@typescript-eslint/eslint-plugin" "^4.26.0"

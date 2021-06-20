@@ -28,7 +28,7 @@ export class Hand {
     return max(this.cards);
   }
 
-  get groupedCards(): Record<CardRank, Card[]> {
+  get groupedCards(): Map<CardRank, Card[]> {
     return groupBy(this.cards, (card) => card.rank);
   }
 
@@ -57,7 +57,7 @@ export class Hand {
     func: (acc: T, value: Card[], index: number) => T,
     init: T
   ): T {
-    return Object.values(this.groupedCards).reduce(func, init);
+    return Array.from(this.groupedCards.values()).reduce(func, init);
   }
 
   countRankGroupsBySize(n: number): number {

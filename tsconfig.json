@@ -12,6 +12,7 @@
     }
   },
   "include": [
+    "rollup.config.ts",
     "src/**/*.ts",
     "test/unit/**/*.ts"
   ],

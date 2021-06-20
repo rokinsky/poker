@@ -11,7 +11,7 @@ export class FiveCardHand extends Hand implements Comparable<FiveCardHand> {
   private readonly _values: readonly [type: HandType, ...cards: Card[]];
 
   // `id` means the string representation of the player's original hand
-  constructor(private _id: string, cards: readonly Card[]) {
+  constructor(private readonly _id: string, cards: readonly Card[]) {
     super(cards);
     const type = this.type;
     // Used for comparing five card hand values, memoized and sorted by priority DESC
