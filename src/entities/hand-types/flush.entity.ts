@@ -5,9 +5,11 @@ import { HandType as HandTypeEnum } from "@/enums/hand-type.enum";
 
 // Flush - 5 cards of the same suit
 export class Flush extends HandType {
-  constructor() {
-    super(HandTypeEnum.FLUSH);
+  private constructor(type: HandTypeEnum) {
+    super(type);
   }
+
+  static readonly instance: Flush = new Flush(HandTypeEnum.FLUSH);
 
   check(hand: Hand): boolean {
     return hand.suits.length === 1;

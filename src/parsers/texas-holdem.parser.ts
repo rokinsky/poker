@@ -4,10 +4,22 @@ import { TexasHoldemGame } from "@/games/texas-holdem.game";
 import { GameParser } from "@/parsers/game.parser";
 
 export class TexasHoldemParser extends GameParser<TexasHoldemGame> {
-  constructor() {
+  private constructor(regex: RegExp) {
+    super(regex);
+  }
+
+  private static _instance: TexasHoldemParser;
+
+  static {
     const boardRe = GameParser.getBoardRe(5);
     const handsRe = GameParser.getHandsRe(2);
-    super(new RegExp(`^${GameType.TEXAS_HOLDEM} ${boardRe} ${handsRe}$`));
+    TexasHoldemParser._instance = new TexasHoldemParser(
+      new RegExp(`^${GameType.TEXAS_HOLDEM} ${boardRe} ${handsRe}$`)
+    );
+  }
+
+  static get instance(): TexasHoldemParser {
+    return TexasHoldemParser._instance;
   }
 
   parse(line: string): TexasHoldemGame {

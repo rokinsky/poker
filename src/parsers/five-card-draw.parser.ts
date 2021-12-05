@@ -4,9 +4,21 @@ import { FiveCardDrawGame } from "@/games/five-card-draw.game";
 import { GameParser } from "@/parsers/game.parser";
 
 export class FiveCardDrawParser extends GameParser<FiveCardDrawGame> {
-  constructor() {
+  private constructor(regex: RegExp) {
+    super(regex);
+  }
+
+  private static _instance: FiveCardDrawParser;
+
+  static {
     const handsRe = GameParser.getHandsRe(5);
-    super(new RegExp(`^${GameType.FIVE_CARD_DRAW} ${handsRe}$`));
+    FiveCardDrawParser._instance = new FiveCardDrawParser(
+      new RegExp(`^${GameType.FIVE_CARD_DRAW} ${handsRe}$`)
+    );
+  }
+
+  static get instance(): FiveCardDrawParser {
+    return FiveCardDrawParser._instance;
   }
 
   parse(line: string): FiveCardDrawGame {

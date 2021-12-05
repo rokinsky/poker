@@ -5,9 +5,11 @@ import { HandType as HandTypeEnum } from "@/enums/hand-type.enum";
 
 // High card - the "fallback" in case no other hand value rule applies
 export class HighCard extends HandType {
-  constructor() {
-    super(HandTypeEnum.HIGH_CARD);
+  private constructor(type: HandTypeEnum) {
+    super(type);
   }
+
+  static readonly instance: HighCard = new HighCard(HandTypeEnum.HIGH_CARD);
 
   check(_hand: Hand): boolean {
     return true;

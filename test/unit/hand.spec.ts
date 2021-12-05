@@ -26,17 +26,17 @@ describe("Hand Types", () => {
   let hand: FiveCardHand;
   describe("Straight Flush", () => {
     beforeEach(() => {
-      type = new StraightFlush();
+      type = StraightFlush.instance;
     });
 
     describe("KcTcJcQcAc", () => {
       beforeEach(() => {
         hand = mockFiveCardHand([
-          new Card(CardRank.KING, CardSuit.CLUBS),
-          new Card(CardRank.TEN, CardSuit.CLUBS),
-          new Card(CardRank.JACK, CardSuit.CLUBS),
-          new Card(CardRank.QUEEN, CardSuit.CLUBS),
-          new Card(CardRank.ACE, CardSuit.CLUBS),
+          Card.of(CardRank.KING, CardSuit.CLUBS),
+          Card.of(CardRank.TEN, CardSuit.CLUBS),
+          Card.of(CardRank.JACK, CardSuit.CLUBS),
+          Card.of(CardRank.QUEEN, CardSuit.CLUBS),
+          Card.of(CardRank.ACE, CardSuit.CLUBS),
         ]);
       });
 
@@ -47,8 +47,8 @@ describe("Hand Types", () => {
 
       test("should be AcAc highest cards", () => {
         expect(type.highestCards(hand)).toEqual([
-          new Card(CardRank.ACE, CardSuit.CLUBS),
-          new Card(CardRank.ACE, CardSuit.CLUBS),
+          Card.of(CardRank.ACE, CardSuit.CLUBS),
+          Card.of(CardRank.ACE, CardSuit.CLUBS),
         ]);
       });
     });
@@ -56,11 +56,11 @@ describe("Hand Types", () => {
     describe("7d8dTdSdNd", () => {
       beforeEach(() => {
         hand = mockFiveCardHand([
-          new Card(CardRank.SIX, CardSuit.DIAMONDS),
-          new Card(CardRank.EIGHT, CardSuit.DIAMONDS),
-          new Card(CardRank.TEN, CardSuit.DIAMONDS),
-          new Card(CardRank.SEVEN, CardSuit.DIAMONDS),
-          new Card(CardRank.NINE, CardSuit.DIAMONDS),
+          Card.of(CardRank.SIX, CardSuit.DIAMONDS),
+          Card.of(CardRank.EIGHT, CardSuit.DIAMONDS),
+          Card.of(CardRank.TEN, CardSuit.DIAMONDS),
+          Card.of(CardRank.SEVEN, CardSuit.DIAMONDS),
+          Card.of(CardRank.NINE, CardSuit.DIAMONDS),
         ]);
       });
 
@@ -71,8 +71,8 @@ describe("Hand Types", () => {
 
       test("should be TdTd highest cards", () => {
         expect(type.highestCards(hand)).toEqual([
-          new Card(CardRank.TEN, CardSuit.DIAMONDS),
-          new Card(CardRank.TEN, CardSuit.DIAMONDS),
+          Card.of(CardRank.TEN, CardSuit.DIAMONDS),
+          Card.of(CardRank.TEN, CardSuit.DIAMONDS),
         ]);
       });
     });
@@ -80,11 +80,11 @@ describe("Hand Types", () => {
     describe("2hAh4h3h5h", () => {
       beforeEach(() => {
         hand = mockFiveCardHand([
-          new Card(CardRank.TWO, CardSuit.HEARTS),
-          new Card(CardRank.ACE, CardSuit.HEARTS),
-          new Card(CardRank.FOUR, CardSuit.HEARTS),
-          new Card(CardRank.THREE, CardSuit.HEARTS),
-          new Card(CardRank.FIVE, CardSuit.HEARTS),
+          Card.of(CardRank.TWO, CardSuit.HEARTS),
+          Card.of(CardRank.ACE, CardSuit.HEARTS),
+          Card.of(CardRank.FOUR, CardSuit.HEARTS),
+          Card.of(CardRank.THREE, CardSuit.HEARTS),
+          Card.of(CardRank.FIVE, CardSuit.HEARTS),
         ]);
       });
 
@@ -95,8 +95,8 @@ describe("Hand Types", () => {
 
       test("should be FhAh highest cards", () => {
         expect(type.highestCards(hand)).toEqual([
-          new Card(CardRank.FIVE, CardSuit.HEARTS),
-          new Card(CardRank.ACE, CardSuit.HEARTS),
+          Card.of(CardRank.FIVE, CardSuit.HEARTS),
+          Card.of(CardRank.ACE, CardSuit.HEARTS),
         ]);
       });
     });
@@ -104,17 +104,17 @@ describe("Hand Types", () => {
 
   describe("Four Of A Kind", () => {
     beforeEach(() => {
-      type = new FourOfAKind();
+      type = FourOfAKind.instance;
     });
 
     describe("JdJsJhJc9d", () => {
       beforeEach(() => {
         hand = mockFiveCardHand([
-          new Card(CardRank.JACK, CardSuit.DIAMONDS),
-          new Card(CardRank.JACK, CardSuit.SPADES),
-          new Card(CardRank.JACK, CardSuit.HEARTS),
-          new Card(CardRank.JACK, CardSuit.CLUBS),
-          new Card(CardRank.NINE, CardSuit.DIAMONDS),
+          Card.of(CardRank.JACK, CardSuit.DIAMONDS),
+          Card.of(CardRank.JACK, CardSuit.SPADES),
+          Card.of(CardRank.JACK, CardSuit.HEARTS),
+          Card.of(CardRank.JACK, CardSuit.CLUBS),
+          Card.of(CardRank.NINE, CardSuit.DIAMONDS),
         ]);
       });
 
@@ -125,7 +125,7 @@ describe("Hand Types", () => {
 
       test("should be Jd highest card", () => {
         expect(type.highestCards(hand)).toEqual([
-          new Card(CardRank.JACK, CardSuit.DIAMONDS),
+          Card.of(CardRank.JACK, CardSuit.DIAMONDS),
         ]);
       });
     });
@@ -133,17 +133,17 @@ describe("Hand Types", () => {
 
   describe("Full House", () => {
     beforeEach(() => {
-      type = new FullHouse();
+      type = FullHouse.instance;
     });
 
     describe("7d7s7hAcAd", () => {
       beforeEach(() => {
         hand = mockFiveCardHand([
-          new Card(CardRank.SEVEN, CardSuit.DIAMONDS),
-          new Card(CardRank.SEVEN, CardSuit.SPADES),
-          new Card(CardRank.SEVEN, CardSuit.HEARTS),
-          new Card(CardRank.ACE, CardSuit.CLUBS),
-          new Card(CardRank.ACE, CardSuit.DIAMONDS),
+          Card.of(CardRank.SEVEN, CardSuit.DIAMONDS),
+          Card.of(CardRank.SEVEN, CardSuit.SPADES),
+          Card.of(CardRank.SEVEN, CardSuit.HEARTS),
+          Card.of(CardRank.ACE, CardSuit.CLUBS),
+          Card.of(CardRank.ACE, CardSuit.DIAMONDS),
         ]);
       });
 
@@ -154,8 +154,8 @@ describe("Hand Types", () => {
 
       test("should be 7dAc highest card", () => {
         expect(type.highestCards(hand)).toEqual([
-          new Card(CardRank.SEVEN, CardSuit.DIAMONDS),
-          new Card(CardRank.ACE, CardSuit.CLUBS),
+          Card.of(CardRank.SEVEN, CardSuit.DIAMONDS),
+          Card.of(CardRank.ACE, CardSuit.CLUBS),
         ]);
       });
     });
@@ -163,17 +163,17 @@ describe("Hand Types", () => {
 
   describe("Flush", () => {
     beforeEach(() => {
-      type = new Flush();
+      type = Flush.instance;
     });
 
     describe("2d5dAdJdNd", () => {
       beforeEach(() => {
         hand = mockFiveCardHand([
-          new Card(CardRank.TWO, CardSuit.DIAMONDS),
-          new Card(CardRank.FIVE, CardSuit.DIAMONDS),
-          new Card(CardRank.ACE, CardSuit.DIAMONDS),
-          new Card(CardRank.JACK, CardSuit.DIAMONDS),
-          new Card(CardRank.NINE, CardSuit.DIAMONDS),
+          Card.of(CardRank.TWO, CardSuit.DIAMONDS),
+          Card.of(CardRank.FIVE, CardSuit.DIAMONDS),
+          Card.of(CardRank.ACE, CardSuit.DIAMONDS),
+          Card.of(CardRank.JACK, CardSuit.DIAMONDS),
+          Card.of(CardRank.NINE, CardSuit.DIAMONDS),
         ]);
       });
 
@@ -184,7 +184,7 @@ describe("Hand Types", () => {
 
       test("should be Ad highest card", () => {
         expect(type.highestCards(hand)).toEqual([
-          new Card(CardRank.ACE, CardSuit.DIAMONDS),
+          Card.of(CardRank.ACE, CardSuit.DIAMONDS),
         ]);
       });
     });
@@ -192,17 +192,17 @@ describe("Hand Types", () => {
 
   describe("Straight", () => {
     beforeEach(() => {
-      type = new Straight();
+      type = Straight.instance;
     });
 
     describe("5s2cAdFd3h", () => {
       beforeEach(() => {
         hand = mockFiveCardHand([
-          new Card(CardRank.FIVE, CardSuit.SPADES),
-          new Card(CardRank.TWO, CardSuit.CLUBS),
-          new Card(CardRank.ACE, CardSuit.DIAMONDS),
-          new Card(CardRank.FOUR, CardSuit.DIAMONDS),
-          new Card(CardRank.THREE, CardSuit.HEARTS),
+          Card.of(CardRank.FIVE, CardSuit.SPADES),
+          Card.of(CardRank.TWO, CardSuit.CLUBS),
+          Card.of(CardRank.ACE, CardSuit.DIAMONDS),
+          Card.of(CardRank.FOUR, CardSuit.DIAMONDS),
+          Card.of(CardRank.THREE, CardSuit.HEARTS),
         ]);
       });
 
@@ -213,7 +213,7 @@ describe("Hand Types", () => {
 
       test("should be 5s highest card", () => {
         expect(type.highestCards(hand)).toEqual([
-          new Card(CardRank.FIVE, CardSuit.SPADES),
+          Card.of(CardRank.FIVE, CardSuit.SPADES),
         ]);
       });
     });
@@ -221,17 +221,17 @@ describe("Hand Types", () => {
 
   describe("Three Of A Kind", () => {
     beforeEach(() => {
-      type = new ThreeOfAKind();
+      type = ThreeOfAKind.instance;
     });
 
     describe("7s7c7d4d3h", () => {
       beforeEach(() => {
         hand = mockFiveCardHand([
-          new Card(CardRank.SEVEN, CardSuit.SPADES),
-          new Card(CardRank.SEVEN, CardSuit.CLUBS),
-          new Card(CardRank.SEVEN, CardSuit.DIAMONDS),
-          new Card(CardRank.FOUR, CardSuit.DIAMONDS),
-          new Card(CardRank.THREE, CardSuit.HEARTS),
+          Card.of(CardRank.SEVEN, CardSuit.SPADES),
+          Card.of(CardRank.SEVEN, CardSuit.CLUBS),
+          Card.of(CardRank.SEVEN, CardSuit.DIAMONDS),
+          Card.of(CardRank.FOUR, CardSuit.DIAMONDS),
+          Card.of(CardRank.THREE, CardSuit.HEARTS),
         ]);
       });
 
@@ -242,7 +242,7 @@ describe("Hand Types", () => {
 
       test("should be 7s highest card", () => {
         expect(type.highestCards(hand)).toEqual([
-          new Card(CardRank.SEVEN, CardSuit.SPADES),
+          Card.of(CardRank.SEVEN, CardSuit.SPADES),
         ]);
       });
     });
@@ -250,17 +250,17 @@ describe("Hand Types", () => {
 
   describe("Two Pairs", () => {
     beforeEach(() => {
-      type = new TwoPairs();
+      type = TwoPairs.instance;
     });
 
     describe("7s7cKsKd3h", () => {
       beforeEach(() => {
         hand = mockFiveCardHand([
-          new Card(CardRank.SEVEN, CardSuit.SPADES),
-          new Card(CardRank.SEVEN, CardSuit.CLUBS),
-          new Card(CardRank.KING, CardSuit.SPADES),
-          new Card(CardRank.KING, CardSuit.DIAMONDS),
-          new Card(CardRank.THREE, CardSuit.HEARTS),
+          Card.of(CardRank.SEVEN, CardSuit.SPADES),
+          Card.of(CardRank.SEVEN, CardSuit.CLUBS),
+          Card.of(CardRank.KING, CardSuit.SPADES),
+          Card.of(CardRank.KING, CardSuit.DIAMONDS),
+          Card.of(CardRank.THREE, CardSuit.HEARTS),
         ]);
       });
 
@@ -271,8 +271,8 @@ describe("Hand Types", () => {
 
       test("should be Ks7s highest card", () => {
         expect(type.highestCards(hand)).toEqual([
-          new Card(CardRank.KING, CardSuit.SPADES),
-          new Card(CardRank.SEVEN, CardSuit.SPADES),
+          Card.of(CardRank.KING, CardSuit.SPADES),
+          Card.of(CardRank.SEVEN, CardSuit.SPADES),
         ]);
       });
     });
@@ -280,17 +280,17 @@ describe("Hand Types", () => {
 
   describe("High Card", () => {
     beforeEach(() => {
-      type = new HighCard();
+      type = HighCard.instance;
     });
 
     describe("Js7c2s5dTh", () => {
       beforeEach(() => {
         hand = mockFiveCardHand([
-          new Card(CardRank.JACK, CardSuit.SPADES),
-          new Card(CardRank.SEVEN, CardSuit.CLUBS),
-          new Card(CardRank.TWO, CardSuit.SPADES),
-          new Card(CardRank.FIVE, CardSuit.DIAMONDS),
-          new Card(CardRank.TEN, CardSuit.HEARTS),
+          Card.of(CardRank.JACK, CardSuit.SPADES),
+          Card.of(CardRank.SEVEN, CardSuit.CLUBS),
+          Card.of(CardRank.TWO, CardSuit.SPADES),
+          Card.of(CardRank.FIVE, CardSuit.DIAMONDS),
+          Card.of(CardRank.TEN, CardSuit.HEARTS),
         ]);
       });
 
@@ -301,7 +301,7 @@ describe("Hand Types", () => {
 
       test("should be Js highest card", () => {
         expect(type.highestCards(hand)).toEqual([
-          new Card(CardRank.JACK, CardSuit.SPADES),
+          Card.of(CardRank.JACK, CardSuit.SPADES),
         ]);
       });
     });
@@ -309,11 +309,11 @@ describe("Hand Types", () => {
     describe("3s7c2s5dTh", () => {
       beforeEach(() => {
         hand = mockFiveCardHand([
-          new Card(CardRank.THREE, CardSuit.SPADES),
-          new Card(CardRank.SEVEN, CardSuit.CLUBS),
-          new Card(CardRank.TWO, CardSuit.SPADES),
-          new Card(CardRank.FIVE, CardSuit.DIAMONDS),
-          new Card(CardRank.TEN, CardSuit.HEARTS),
+          Card.of(CardRank.THREE, CardSuit.SPADES),
+          Card.of(CardRank.SEVEN, CardSuit.CLUBS),
+          Card.of(CardRank.TWO, CardSuit.SPADES),
+          Card.of(CardRank.FIVE, CardSuit.DIAMONDS),
+          Card.of(CardRank.TEN, CardSuit.HEARTS),
         ]);
       });
 
@@ -324,7 +324,7 @@ describe("Hand Types", () => {
 
       test("should be Th highest card", () => {
         expect(type.highestCards(hand)).toEqual([
-          new Card(CardRank.TEN, CardSuit.HEARTS),
+          Card.of(CardRank.TEN, CardSuit.HEARTS),
         ]);
       });
     });
@@ -334,19 +334,19 @@ describe("Hand Types", () => {
 describe("Hand Comparison", () => {
   test("QsQcQh8d8h should be greater than 9s9c9hKdKh", () => {
     const winner = mockFiveCardHand([
-      new Card(CardRank.QUEEN, CardSuit.SPADES),
-      new Card(CardRank.QUEEN, CardSuit.CLUBS),
-      new Card(CardRank.QUEEN, CardSuit.HEARTS),
-      new Card(CardRank.EIGHT, CardSuit.DIAMONDS),
-      new Card(CardRank.EIGHT, CardSuit.HEARTS),
+      Card.of(CardRank.QUEEN, CardSuit.SPADES),
+      Card.of(CardRank.QUEEN, CardSuit.CLUBS),
+      Card.of(CardRank.QUEEN, CardSuit.HEARTS),
+      Card.of(CardRank.EIGHT, CardSuit.DIAMONDS),
+      Card.of(CardRank.EIGHT, CardSuit.HEARTS),
     ]);
 
     const looser = mockFiveCardHand([
-      new Card(CardRank.NINE, CardSuit.SPADES),
-      new Card(CardRank.NINE, CardSuit.CLUBS),
-      new Card(CardRank.NINE, CardSuit.HEARTS),
-      new Card(CardRank.KING, CardSuit.DIAMONDS),
-      new Card(CardRank.KING, CardSuit.HEARTS),
+      Card.of(CardRank.NINE, CardSuit.SPADES),
+      Card.of(CardRank.NINE, CardSuit.CLUBS),
+      Card.of(CardRank.NINE, CardSuit.HEARTS),
+      Card.of(CardRank.KING, CardSuit.DIAMONDS),
+      Card.of(CardRank.KING, CardSuit.HEARTS),
     ]);
 
     expect(winner.compare(looser)).toEqual(CompareResult.GREATER);
@@ -354,19 +354,19 @@ describe("Hand Comparison", () => {
 
   test("KsKcKh7d7h should be greater than JdJhQsQcQh", () => {
     const winner = mockFiveCardHand([
-      new Card(CardRank.KING, CardSuit.SPADES),
-      new Card(CardRank.KING, CardSuit.CLUBS),
-      new Card(CardRank.KING, CardSuit.HEARTS),
-      new Card(CardRank.SEVEN, CardSuit.DIAMONDS),
-      new Card(CardRank.SEVEN, CardSuit.HEARTS),
+      Card.of(CardRank.KING, CardSuit.SPADES),
+      Card.of(CardRank.KING, CardSuit.CLUBS),
+      Card.of(CardRank.KING, CardSuit.HEARTS),
+      Card.of(CardRank.SEVEN, CardSuit.DIAMONDS),
+      Card.of(CardRank.SEVEN, CardSuit.HEARTS),
     ]);
 
     const looser = mockFiveCardHand([
-      new Card(CardRank.JACK, CardSuit.DIAMONDS),
-      new Card(CardRank.JACK, CardSuit.HEARTS),
-      new Card(CardRank.QUEEN, CardSuit.SPADES),
-      new Card(CardRank.QUEEN, CardSuit.CLUBS),
-      new Card(CardRank.QUEEN, CardSuit.HEARTS),
+      Card.of(CardRank.JACK, CardSuit.DIAMONDS),
+      Card.of(CardRank.JACK, CardSuit.HEARTS),
+      Card.of(CardRank.QUEEN, CardSuit.SPADES),
+      Card.of(CardRank.QUEEN, CardSuit.CLUBS),
+      Card.of(CardRank.QUEEN, CardSuit.HEARTS),
     ]);
 
     expect(winner.compare(looser)).toEqual(CompareResult.GREATER);
@@ -374,19 +374,19 @@ describe("Hand Comparison", () => {
 
   test("KsKcKh7d7h should be greater than 6d6hKsKcKh", () => {
     const winner = mockFiveCardHand([
-      new Card(CardRank.KING, CardSuit.SPADES),
-      new Card(CardRank.KING, CardSuit.CLUBS),
-      new Card(CardRank.KING, CardSuit.HEARTS),
-      new Card(CardRank.SEVEN, CardSuit.DIAMONDS),
-      new Card(CardRank.SEVEN, CardSuit.HEARTS),
+      Card.of(CardRank.KING, CardSuit.SPADES),
+      Card.of(CardRank.KING, CardSuit.CLUBS),
+      Card.of(CardRank.KING, CardSuit.HEARTS),
+      Card.of(CardRank.SEVEN, CardSuit.DIAMONDS),
+      Card.of(CardRank.SEVEN, CardSuit.HEARTS),
     ]);
 
     const looser = mockFiveCardHand([
-      new Card(CardRank.SIX, CardSuit.DIAMONDS),
-      new Card(CardRank.SIX, CardSuit.HEARTS),
-      new Card(CardRank.KING, CardSuit.SPADES),
-      new Card(CardRank.KING, CardSuit.CLUBS),
-      new Card(CardRank.KING, CardSuit.HEARTS),
+      Card.of(CardRank.SIX, CardSuit.DIAMONDS),
+      Card.of(CardRank.SIX, CardSuit.HEARTS),
+      Card.of(CardRank.KING, CardSuit.SPADES),
+      Card.of(CardRank.KING, CardSuit.CLUBS),
+      Card.of(CardRank.KING, CardSuit.HEARTS),
     ]);
 
     expect(winner.compare(looser)).toEqual(CompareResult.GREATER);
@@ -394,19 +394,19 @@ describe("Hand Comparison", () => {
 
   test("6h2s3c4h5d should be greater than 3s4cAd2h5h", () => {
     const winner = mockFiveCardHand([
-      new Card(CardRank.SIX, CardSuit.HEARTS),
-      new Card(CardRank.TWO, CardSuit.SPADES),
-      new Card(CardRank.THREE, CardSuit.CLUBS),
-      new Card(CardRank.FOUR, CardSuit.HEARTS),
-      new Card(CardRank.FIVE, CardSuit.DIAMONDS),
+      Card.of(CardRank.SIX, CardSuit.HEARTS),
+      Card.of(CardRank.TWO, CardSuit.SPADES),
+      Card.of(CardRank.THREE, CardSuit.CLUBS),
+      Card.of(CardRank.FOUR, CardSuit.HEARTS),
+      Card.of(CardRank.FIVE, CardSuit.DIAMONDS),
     ]);
 
     const looser = mockFiveCardHand([
-      new Card(CardRank.THREE, CardSuit.SPADES),
-      new Card(CardRank.FOUR, CardSuit.CLUBS),
-      new Card(CardRank.ACE, CardSuit.DIAMONDS),
-      new Card(CardRank.TWO, CardSuit.HEARTS),
-      new Card(CardRank.FIVE, CardSuit.HEARTS),
+      Card.of(CardRank.THREE, CardSuit.SPADES),
+      Card.of(CardRank.FOUR, CardSuit.CLUBS),
+      Card.of(CardRank.ACE, CardSuit.DIAMONDS),
+      Card.of(CardRank.TWO, CardSuit.HEARTS),
+      Card.of(CardRank.FIVE, CardSuit.HEARTS),
     ]);
 
     expect(winner.compare(looser)).toEqual(CompareResult.GREATER);
@@ -414,19 +414,19 @@ describe("Hand Comparison", () => {
 
   test("6h2h3h4h5h should be greater than 3s4sAs2s5s", () => {
     const winner = mockFiveCardHand([
-      new Card(CardRank.SIX, CardSuit.HEARTS),
-      new Card(CardRank.TWO, CardSuit.HEARTS),
-      new Card(CardRank.THREE, CardSuit.HEARTS),
-      new Card(CardRank.FOUR, CardSuit.HEARTS),
-      new Card(CardRank.FIVE, CardSuit.HEARTS),
+      Card.of(CardRank.SIX, CardSuit.HEARTS),
+      Card.of(CardRank.TWO, CardSuit.HEARTS),
+      Card.of(CardRank.THREE, CardSuit.HEARTS),
+      Card.of(CardRank.FOUR, CardSuit.HEARTS),
+      Card.of(CardRank.FIVE, CardSuit.HEARTS),
     ]);
 
     const looser = mockFiveCardHand([
-      new Card(CardRank.THREE, CardSuit.SPADES),
-      new Card(CardRank.FOUR, CardSuit.SPADES),
-      new Card(CardRank.ACE, CardSuit.SPADES),
-      new Card(CardRank.TWO, CardSuit.SPADES),
-      new Card(CardRank.FIVE, CardSuit.SPADES),
+      Card.of(CardRank.THREE, CardSuit.SPADES),
+      Card.of(CardRank.FOUR, CardSuit.SPADES),
+      Card.of(CardRank.ACE, CardSuit.SPADES),
+      Card.of(CardRank.TWO, CardSuit.SPADES),
+      Card.of(CardRank.FIVE, CardSuit.SPADES),
     ]);
 
     expect(winner.compare(looser)).toEqual(CompareResult.GREATER);
@@ -434,19 +434,19 @@ describe("Hand Comparison", () => {
 
   test("ThJsQcKhAd should be greater than 9cTcJdQhKs", () => {
     const winner = mockFiveCardHand([
-      new Card(CardRank.TEN, CardSuit.HEARTS),
-      new Card(CardRank.JACK, CardSuit.SPADES),
-      new Card(CardRank.QUEEN, CardSuit.CLUBS),
-      new Card(CardRank.KING, CardSuit.HEARTS),
-      new Card(CardRank.ACE, CardSuit.DIAMONDS),
+      Card.of(CardRank.TEN, CardSuit.HEARTS),
+      Card.of(CardRank.JACK, CardSuit.SPADES),
+      Card.of(CardRank.QUEEN, CardSuit.CLUBS),
+      Card.of(CardRank.KING, CardSuit.HEARTS),
+      Card.of(CardRank.ACE, CardSuit.DIAMONDS),
     ]);
 
     const looser = mockFiveCardHand([
-      new Card(CardRank.NINE, CardSuit.CLUBS),
-      new Card(CardRank.TEN, CardSuit.CLUBS),
-      new Card(CardRank.JACK, CardSuit.DIAMONDS),
-      new Card(CardRank.QUEEN, CardSuit.HEARTS),
-      new Card(CardRank.KING, CardSuit.SPADES),
+      Card.of(CardRank.NINE, CardSuit.CLUBS),
+      Card.of(CardRank.TEN, CardSuit.CLUBS),
+      Card.of(CardRank.JACK, CardSuit.DIAMONDS),
+      Card.of(CardRank.QUEEN, CardSuit.HEARTS),
+      Card.of(CardRank.KING, CardSuit.SPADES),
     ]);
 
     expect(winner.compare(looser)).toEqual(CompareResult.GREATER);
@@ -454,19 +454,19 @@ describe("Hand Comparison", () => {
 
   test("ThTsJcJh2d should be less than JdJs3sTdTc", () => {
     const winner = mockFiveCardHand([
-      new Card(CardRank.TEN, CardSuit.HEARTS),
-      new Card(CardRank.TEN, CardSuit.SPADES),
-      new Card(CardRank.JACK, CardSuit.CLUBS),
-      new Card(CardRank.JACK, CardSuit.HEARTS),
-      new Card(CardRank.TWO, CardSuit.DIAMONDS),
+      Card.of(CardRank.TEN, CardSuit.HEARTS),
+      Card.of(CardRank.TEN, CardSuit.SPADES),
+      Card.of(CardRank.JACK, CardSuit.CLUBS),
+      Card.of(CardRank.JACK, CardSuit.HEARTS),
+      Card.of(CardRank.TWO, CardSuit.DIAMONDS),
     ]);
 
     const looser = mockFiveCardHand([
-      new Card(CardRank.JACK, CardSuit.DIAMONDS),
-      new Card(CardRank.JACK, CardSuit.SPADES),
-      new Card(CardRank.THREE, CardSuit.SPADES),
-      new Card(CardRank.TEN, CardSuit.DIAMONDS),
-      new Card(CardRank.TEN, CardSuit.CLUBS),
+      Card.of(CardRank.JACK, CardSuit.DIAMONDS),
+      Card.of(CardRank.JACK, CardSuit.SPADES),
+      Card.of(CardRank.THREE, CardSuit.SPADES),
+      Card.of(CardRank.TEN, CardSuit.DIAMONDS),
+      Card.of(CardRank.TEN, CardSuit.CLUBS),
     ]);
 
     expect(winner.compare(looser)).toEqual(CompareResult.LESS);
@@ -474,19 +474,19 @@ describe("Hand Comparison", () => {
 
   test("ThTsJcJhAd should be equal JdJsAsTdTc", () => {
     const winner = mockFiveCardHand([
-      new Card(CardRank.TEN, CardSuit.HEARTS),
-      new Card(CardRank.TEN, CardSuit.SPADES),
-      new Card(CardRank.JACK, CardSuit.CLUBS),
-      new Card(CardRank.JACK, CardSuit.HEARTS),
-      new Card(CardRank.ACE, CardSuit.DIAMONDS),
+      Card.of(CardRank.TEN, CardSuit.HEARTS),
+      Card.of(CardRank.TEN, CardSuit.SPADES),
+      Card.of(CardRank.JACK, CardSuit.CLUBS),
+      Card.of(CardRank.JACK, CardSuit.HEARTS),
+      Card.of(CardRank.ACE, CardSuit.DIAMONDS),
     ]);
 
     const looser = mockFiveCardHand([
-      new Card(CardRank.JACK, CardSuit.DIAMONDS),
-      new Card(CardRank.JACK, CardSuit.SPADES),
-      new Card(CardRank.ACE, CardSuit.SPADES),
-      new Card(CardRank.TEN, CardSuit.DIAMONDS),
-      new Card(CardRank.TEN, CardSuit.CLUBS),
+      Card.of(CardRank.JACK, CardSuit.DIAMONDS),
+      Card.of(CardRank.JACK, CardSuit.SPADES),
+      Card.of(CardRank.ACE, CardSuit.SPADES),
+      Card.of(CardRank.TEN, CardSuit.DIAMONDS),
+      Card.of(CardRank.TEN, CardSuit.CLUBS),
     ]);
 
     expect(winner.compare(looser)).toEqual(CompareResult.EQUAL);

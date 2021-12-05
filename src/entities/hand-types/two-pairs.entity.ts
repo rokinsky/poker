@@ -3,7 +3,13 @@ import { HandType as HandTypeEnum } from "@/enums/hand-type.enum";
 
 // Two pairs - two Pair-s
 export class TwoPairs extends NOfAKind {
-  constructor() {
-    super(HandTypeEnum.TWO_PAIRS, 2, 2);
+  private constructor(type: HandTypeEnum, n: number, occurs: number) {
+    super(type, n, occurs);
   }
+
+  static readonly instance: TwoPairs = new TwoPairs(
+    HandTypeEnum.TWO_PAIRS,
+    2,
+    2
+  );
 }

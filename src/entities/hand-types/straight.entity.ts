@@ -7,9 +7,11 @@ import { arrayEquals } from "@/utils";
 
 // Straight - a sequence of 5 cards of consecutive rank (note an exception - A can both precede 2 and follow K)
 export class Straight extends HandType {
-  constructor() {
-    super(HandTypeEnum.STRAIGHT);
+  private constructor(type: HandTypeEnum) {
+    super(type);
   }
+
+  static readonly instance: Straight = new Straight(HandTypeEnum.STRAIGHT);
 
   check(hand: Hand): boolean {
     const ranks = hand.distinctSortedRanks;

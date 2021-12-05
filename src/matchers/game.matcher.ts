@@ -7,9 +7,9 @@ import { TexasHoldemParser } from "@/parsers/texas-holdem.parser";
 
 export class GameMatcher {
   static readonly parsers: readonly Parser<Game>[] = [
-    new TexasHoldemParser(),
-    new OmahaHoldemParser(),
-    new FiveCardDrawParser(),
+    TexasHoldemParser.instance,
+    OmahaHoldemParser.instance,
+    FiveCardDrawParser.instance,
   ];
 
   static match(line: string): Game {

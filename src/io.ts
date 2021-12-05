@@ -1,15 +1,19 @@
 import { createInterface, Interface } from "readline";
 
 export class IO {
-  private readonly _in: Interface;
-  private readonly _out: NodeJS.WritableStream;
+  private constructor(
+    private readonly _in: Interface,
+    private readonly _out: NodeJS.WritableStream
+  ) {}
 
-  constructor(input: NodeJS.ReadableStream, output: NodeJS.WritableStream) {
-    this._in = createInterface({
-      input: input,
-      crlfDelay: Infinity,
-    });
-    this._out = output;
+  static of(input: NodeJS.ReadableStream, output: NodeJS.WritableStream): IO {
+    return new IO(
+      createInterface({
+        input: input,
+        crlfDelay: Infinity,
+      }),
+      output
+    );
   }
 
   get in(): Interface {

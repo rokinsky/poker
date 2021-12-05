@@ -25,10 +25,14 @@ export class Card implements Comparable<Card> {
 
   static readonly maxNCards = Card.ranks.length * Card.suits.length;
 
-  constructor(
+  private constructor(
     private readonly _rank: CardRank,
     private readonly _suit: CardSuit
   ) {}
+
+  static of(rank: CardRank, suit: CardSuit): Card {
+    return new Card(rank, suit);
+  }
 
   get rank(): CardRank {
     return this._rank;
@@ -39,7 +43,7 @@ export class Card implements Comparable<Card> {
   }
 
   static fromString([rank, suit]: string): Card {
-    return new Card(Card.charToRank(rank), Card.charToSuit(suit));
+    return Card.of(Card.charToRank(rank), Card.charToSuit(suit));
   }
 
   private static readonly charToRank = (ch: string): CardRank =>

@@ -16,15 +16,15 @@ import { RuntimeException } from "@/exceptions/runtime.exception";
 export class HandTypeMatcher {
   // Hand Types in descending order - from strongest to weakest
   static readonly types: readonly HandType[] = [
-    new StraightFlush(),
-    new FourOfAKind(),
-    new FullHouse(),
-    new Flush(),
-    new Straight(),
-    new ThreeOfAKind(),
-    new TwoPairs(),
-    new Pair(),
-    new HighCard(),
+    StraightFlush.instance,
+    FourOfAKind.instance,
+    FullHouse.instance,
+    Flush.instance,
+    Straight.instance,
+    ThreeOfAKind.instance,
+    TwoPairs.instance,
+    Pair.instance,
+    HighCard.instance,
   ];
 
   static match(hand: Hand): HandType {

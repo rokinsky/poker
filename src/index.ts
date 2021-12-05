@@ -1,7 +1,7 @@
 import { Evaluator } from "@/evaluator";
 import { IO } from "@/io";
 
-const io = new IO(process.stdin, process.stdout);
+const io = IO.of(process.stdin, process.stdout);
 
 const main = async () => {
   for await (const line of io) {
